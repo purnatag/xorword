@@ -1,6 +1,7 @@
 use rand::{distributions::Alphanumeric, Rng};
 use std::fs::File;
 use std::io::prelude::*;
+use std::io::{self, ErrorKind};
 use std::path::Path;
 
 fn xor_chunks(name: String) -> Vec<u8> {
@@ -33,45 +34,64 @@ fn xor_chunks(name: String) -> Vec<u8> {
 
     //XOR the chunks together
     let mut sig_xor: Vec<u8> = vec![0u8,0,0,0];
-    //println!("Contents in chunks:");
+    
     for s in sig_chunks.iter(){
-        //println!("> {}", s);
         let chunkvec:Vec<u8> = s.as_bytes().to_vec();
         sig_xor.iter_mut()
                 .zip(chunkvec.iter())
                 .for_each(|(x, y)| *x ^= *y); 
     }
-
-    //Print the result
-    println!("Final 32-bit:");
-
-    for a in sig_xor.iter(){
-        print!("0{:b}",a);
-    }
+    println!("{}",sig_xor.len());
     sig_xor
 }
 
-fn gen_str_for_add() -> String {
+fn gen_str_for_add(n:usize) -> String {
     let s: String = rand::thread_rng()
     .sample_iter(&Alphanumeric)
-    .take(10)
+    .take(10*n)
     .map(char::from)
     .collect();
     println!("{}", s);
     s
 }
 
+fn calculate_distance(s1:String, s2:String) -> Result<i32, io::Error> {
+    if s1.len() != s2.len() /*|| s1.len() != 32*/ {
+        return Err(io::Error::new(ErrorKind::InvalidInput, "Invalid arguments to calculate distance"));
+    }
+
+    let mut dist = 0;
+    for (c1, c2) in s1.chars().zip(s2.chars()) {
+        if c1 != c2 {
+            dist += 1;
+        }
+    }
+
+    Ok(dist)
+}
+
+fn sign_to_string(sgn:Vec<u8>) -> String {
+    let mut result:String = String::new();
+    for s in sgn.iter(){
+        let mut str = format!("{:b}",s);
+        if str.len() < 8 {
+            let mut i = 8 - str.len();
+            let mut zeros = String::new();
+            while i > 0 {
+                zeros += &"0".to_string();
+                i -= 1;
+            }
+            str = zeros + &str;
+        }
+        result += &str;
+        println!("> {}", str);
+    }
+    result
+}
+
 fn main(){
     let signature:String = "4:48+16:0:1440:mss*30,7:mss,sok,ts,nop,ws:df,ecn:0".to_string()
                 .chars().filter(|c| *c != ',').collect();
-    let add_str = gen_str_for_add();
-    let mod_signature:String = signature.clone() + &add_str;
-    let orig_sgn: Vec<u8> = xor_chunks(signature);
-    println!(" .");
-    let added_sgn: Vec<u8> = xor_chunks(mod_signature);
-    let mut entry:String = String::from_utf8(orig_sgn).unwrap() + &" ".to_string();
-    entry = entry + & String::from_utf8(added_sgn).unwrap();
-    
     //Write both the strings into a file
     let path = Path::new("signatures_with_added_text.txt");
     let display = path.display();
@@ -81,10 +101,28 @@ fn main(){
         Err(why) => panic!("couldn't create {}: {}", display, why),
         Ok(file) => file,
     };
+    let orig_sgn: Vec<u8> = xor_chunks(signature.clone());
+    let orig_str = sign_to_string(orig_sgn);
 
-    // Write the signatures to `file`, returns `io::Result<()>`
-    match file.write_all(entry.as_bytes()) {
-        Err(why) => panic!("couldn't write to {}: {}", display, why),
-        Ok(_) => println!("\n successfully wrote to {}", display),
+    for i in 1..11 {    
+        let add_str = gen_str_for_add(i);
+        let mod_signature:String = signature.clone() + &add_str;
+        let added_sgn: Vec<u8> = xor_chunks(mod_signature);
+
+        let mut entry:String = orig_str.clone() + &" ".to_string();
+        println!("\n");
+        entry = entry + & sign_to_string(added_sgn);
+
+        let distance = match calculate_distance(entry.chars().take(32).collect(), entry.chars().skip(33).take(32).collect()){
+            Ok(distance) => distance,
+            Err(err) => panic!("{}", err),
+        };
+        println!("Distance: {}", distance);
+        entry += & format!(" {} \n", distance);
+        // Write the signatures to `file`, returns `io::Result<()>`
+        match file.write_all(entry.as_bytes()) {
+            Err(why) => panic!("couldn't write to {}: {}", display, why),
+            Ok(_) => println!("\n successfully wrote to {}", display),
+        }
     }
 }
