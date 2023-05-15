@@ -20,7 +20,15 @@ fn xor_chunks(name: String) -> Vec<u8> {
     let num_iters = sig_bin.len()/32 + 1;
 
     for i in 0..num_iters{
-        sig_chunks.push(sig_bin.chars().skip(32*i).take(32).collect());
+        let mut push_str:String = sig_bin.chars().skip(32*i).take(32).collect();
+        if push_str.len() < 32 {
+            let mut zeros = "".to_string();
+            for _i in 0..(32 - push_str.len()){
+                zeros += &"0".to_string();
+            }
+            push_str = zeros + &push_str;
+        } 
+        sig_chunks.push(push_str);
     }
 
     //XOR the chunks together
@@ -63,8 +71,6 @@ fn main(){
     let added_sgn: Vec<u8> = xor_chunks(mod_signature);
     let mut entry:String = String::from_utf8(orig_sgn).unwrap() + &" ".to_string();
     entry = entry + & String::from_utf8(added_sgn).unwrap();
-    //if added_sgn.len() < 4{
-    //}
     
     //Write both the strings into a file
     let path = Path::new("signatures_with_added_text.txt");
@@ -79,6 +85,6 @@ fn main(){
     // Write the signatures to `file`, returns `io::Result<()>`
     match file.write_all(entry.as_bytes()) {
         Err(why) => panic!("couldn't write to {}: {}", display, why),
-        Ok(_) => println!("\nsuccessfully wrote to {}", display),
+        Ok(_) => println!("\n successfully wrote to {}", display),
     }
 }
