@@ -10,13 +10,14 @@ The code takes the following steps:
 4. XORs these chunks to get a final 32-bit string S1
   
 5. Then, for i=4 to 2^14, for j = 1 to 1000,
-  5-1. generate i length random alphanumeric string
-  5-2. concatenate it with string S0, get string T0
-  5-3. convert T0 to binary
-  5-4. break into 32 bit chunks, pad the last chunk to 32 if necessary
-  5-5. XOR these chunks to get 32-bit string T1
-  5-6. calculate hamming distance between T1 and S1
-  5-7. calculate average distance over 1000 iterations for each i
+  
+    5-1. generate i length random alphanumeric string
+    5-2. concatenate it with string S0, get string T0
+    5-3. convert T0 to binary
+    5-4. break into 32 bit chunks, pad the last chunk to 32 if necessary
+    5-5. XOR these chunks to get 32-bit string T1
+    5-6. calculate hamming distance between T1 and S1
+    5-7. calculate average distance over 1000 iterations for each i
   
 6. Then the program plots average distance versus i (chars added). 
   
