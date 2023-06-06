@@ -16,7 +16,6 @@ The code takes the following steps:
   5-4. break into 32 bit chunks, pad the last chunk to 32 if necessary
   5-5. XOR these chunks to get 32-bit string T1
   5-6. calculate hamming distance between T1 and S1
-  
   5-7. calculate average distance over 1000 iterations for each i
   
 6. Then the program plots average distance versus i (chars added). 
