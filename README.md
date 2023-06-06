@@ -1,4 +1,12 @@
 # xorword
+
+## To run on Windows
+Assuming the xorword folder is in the present working directory, type in powershell:
+````
+cd ./xorword
+just --shell powershell.exe --shell-arg -c
+````
+
 ## The Input 
 A signature from a p0f sensor, alphanumeric+special characters string
 
