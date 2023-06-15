@@ -1,11 +1,10 @@
 # xorword
 
-## To run on Windows
-Assuming the xorword folder is in the present working directory, type in powershell:
-````
-cd ./xorword
-just --shell powershell.exe --shell-arg -c
-````
+## How to run pipeline
+
+- Install `just` using `cargo install just`.
+- Execute `just run` to use the release code (faster).
+- On windows, you may have to set the default shell to powershell: `just --shell powershell.exe --shell-arg -c`
 
 ## The Input 
 A signature from a p0f sensor, alphanumeric+special characters string
