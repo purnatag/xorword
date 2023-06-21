@@ -1,14 +1,12 @@
 [package]
 name = "xorword"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-#to-binary = "0.4.0"
 rand = "0.8.4"
 plotly = "0.6.0"
 just = "1.14.0"
-gap-buffer = "0.1.0"
-distance = "0.4.0"
+str-distance = "0.1.0"

@@ -191,12 +191,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "distance"
-version = "0.4.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "6d9d8664cf849d7d0f3114a3a387d2f5e4303176d746d5a951aaddc66dfe9240"
-
-[[package]]
 name = "doc-comment"
 version = "0.3.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -255,15 +249,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "e51093e27b0797c359783294ca4f0a911c270184cb10f85783b118614a1501be"
 dependencies = [
  "instant",
-]
-
-[[package]]
-name = "gap-buffer"
-version = "0.1.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "b370cfec8e8c60ebbad85959fe6b03d9fe1730034d32d2ca7f919eccf247f6bf"
-dependencies = [
- "libc",
 ]
 
 [[package]]
@@ -725,6 +710,12 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "a2eb9349b6444b326872e140eb1cf5e7c522154d69e7a0ffb0fb81c06b37543f"
 
 [[package]]
+name = "str-distance"
+version = "0.1.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "8416ac807fc3d3a155ac5e752e03b54c1e8cd1f1bc134959d41a3389aa01cf57"
+
+[[package]]
 name = "strsim"
 version = "0.8.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1059,11 +1050,10 @@ checksum = "1a515f5799fe4961cb532f983ce2b23082366b898e52ffbce459c86f67c8378a"
 
 [[package]]
 name = "xorword"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
- "distance",
- "gap-buffer",
  "just",
  "plotly",
  "rand 0.8.5",
+ "str-distance",
 ]
