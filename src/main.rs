@@ -41,6 +41,7 @@ fn gen_added_signature(n: usize, signature: &str) -> String {
 /// Saves average distance values to a file
 fn main() {
     let signature: String = "4:48+16:0:1440:mss*30,7:mss,sok,ts,nop,ws:df,ecn:0"
+        //let signature:String = "Despite being a herbivore, the Panda's digestive system remarkably resembles a carnivore's"
         .to_string()
         .chars()
         .filter(|c| *c != ',')
