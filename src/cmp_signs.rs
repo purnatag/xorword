@@ -17,6 +17,8 @@ pub struct SignCompare {
     pub similarity_jac: f64,
     /// Levenshtein similarity between the encoded strings
     pub similarity_lev: f64,
+    /// Gaps/holes between the encoded strings
+    pub gaps: i32,
 }
 
 impl SignCompare {
@@ -29,12 +31,13 @@ impl SignCompare {
             distance: 0.0,
             similarity_jac: 0.0,
             similarity_lev: 0.0,
+            gaps: 0,
         };
         //println!(" Computing distance and similarity");
         if sc.sign1.len > 0 || sc.sign2.len > 0 {
             sc.distance = sc.get_distance();
             sc.similarity_jac = sc.get_similarity_jac();
-            sc.similarity_lev = sc.get_similarity_lev();
+            (sc.similarity_lev, sc.gaps) = sc.get_similarity_lev_gaps();
         }
         sc
     }
@@ -60,7 +63,7 @@ impl SignCompare {
         x
     }
 
-    pub fn get_similarity_lev(&mut self) -> f64 {
+    pub fn get_similarity_lev_gaps(&mut self) -> (f64, i32) {
         //println!(" computing distance... ");
         //let inst = Instant::now();
         // let x = calculate_levenshtein_distance(&self.sign1.word_bin, &self.sign2.word_bin);
@@ -70,7 +73,23 @@ impl SignCompare {
             Levenshtein::default(),
         ) * 100f64;
         //println!("                    ... took {} secs",inst.elapsed().as_secs());
-        100f64 - x
+        // Gap calculation
+        let mut gaps = 0;
+        let enc_len;
+        if self.sign1.enc_len <= self.sign2.enc_len {
+            enc_len = self.sign1.enc_len;
+        } else {
+            enc_len = self.sign2.enc_len;
+        }
+
+        for i in 1..enc_len {
+            if self.sign1.encoding.chars().nth(i - 1) != self.sign2.encoding.chars().nth(i - 1)
+                && self.sign1.encoding.chars().nth(i) == self.sign2.encoding.chars().nth(i)
+            {
+                gaps += 1;
+            }
+        }
+        (100f64 - x, gaps)
     }
 }
 

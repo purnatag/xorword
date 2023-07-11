@@ -14,6 +14,8 @@ pub struct Sign {
     pub encoding: String,
     /// length of the signature
     pub len: usize,
+    /// length of its encoding
+    pub enc_len: usize,
 }
 
 impl Sign {
@@ -26,6 +28,7 @@ impl Sign {
             //flate_word: String::new(),
             encoding: String::new(),
             len,
+            enc_len: 0,
         };
 
         if s.len > 0 {
@@ -76,6 +79,7 @@ impl Sign {
             result.push_str(&add);
         }
         assert!(result.len() == 256);
+        self.enc_len = 256;
         self.encoding = result;
     }
 }

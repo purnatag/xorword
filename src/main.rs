@@ -61,7 +61,9 @@ fn main() {
     // Initialise avg distance vector
     let mut avg_dist_vector: Vec<f64> = Vec::new();
     let mut avg_jac_sim_vector: Vec<f64> = Vec::new();
-    let mut avg_lev_dist_vector: Vec<f64> = Vec::new();
+    let mut avg_lev_sim_vector: Vec<f64> = Vec::new();
+    let mut avg_gaps = 0.0;
+    let total = (num_iter - 1) * 1000f64;
 
     for i in 1..num_iter {
         println!("Step i={i}");
@@ -85,18 +87,19 @@ fn main() {
 
             // Accumulate the distance and similarity into a sum for getting mean later
             avg_distance += sc.distance;
-            avg_jac_similarity += sc.similarity_jac * 100.0;
+            avg_jac_similarity += sc.similarity_jac * 100f64;
             avg_lev_similarity += sc.similarity_lev;
+            avg_gaps += sc.gaps as f64;
         }
 
         // Getting the mean distance and saving it for plotting
-        avg_distance /= 1000.0;
-        avg_jac_similarity /= 1000.0;
-        avg_lev_similarity /= 1000.0;
+        avg_distance /= 1000f64;
+        avg_jac_similarity /= 1000f64;
+        avg_lev_similarity /= 1000f64;
 
         avg_dist_vector.push(avg_distance);
         avg_jac_sim_vector.push(avg_jac_similarity);
-        avg_lev_dist_vector.push(100f64 - avg_lev_similarity);
+        avg_lev_sim_vector.push(avg_lev_similarity);
 
         // String to write in file
         let entry = format!(" {}, {} \n", avg_distance, avg_lev_similarity);
@@ -110,12 +113,15 @@ fn main() {
         }
     }
 
+    avg_gaps /= total;
+    println!("Average gap between original and encoding: {}", avg_gaps);
+
     // Plotting the performance of the 32-byte encoding
     // using the average distance and average similarity measures
-    let trace_1 = Scatter::new(avg_dist_vector.clone(), avg_jac_sim_vector.clone())
-        .name("Jaccard Similarity")
+    let trace_1 = Scatter::new(avg_dist_vector.clone(), avg_gaps_vector.clone())
+        .name("Gaps")
         .mode(Mode::LinesMarkers);
-    let trace_2 = Scatter::new(avg_dist_vector.clone(), avg_lev_dist_vector.clone())
+    let trace_2 = Scatter::new(avg_dist_vector.clone(), avg_lev_sim_vector.clone())
         .name("Levenshtein Similarity")
         .mode(Mode::LinesMarkers);
     let mut plot_1 = Plot::new();
