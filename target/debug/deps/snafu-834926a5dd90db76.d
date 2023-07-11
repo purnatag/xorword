@@ -1,0 +1,12 @@
+C:\Users\SubCom\Documents\Projects\Rust Projects\xorword\target\debug\deps\snafu-834926a5dd90db76.rmeta: C:\Users\SubCom\.cargo\registry\src\github.com-1ecc6299db9ec823\snafu-0.7.5\src\lib.rs C:\Users\SubCom\.cargo\registry\src\github.com-1ecc6299db9ec823\snafu-0.7.5\src\backtrace_inert.rs C:\Users\SubCom\.cargo\registry\src\github.com-1ecc6299db9ec823\snafu-0.7.5\src\once_bool.rs C:\Users\SubCom\.cargo\registry\src\github.com-1ecc6299db9ec823\snafu-0.7.5\src\error_chain.rs C:\Users\SubCom\.cargo\registry\src\github.com-1ecc6299db9ec823\snafu-0.7.5\src\report.rs C:\Users\SubCom\.cargo\registry\src\github.com-1ecc6299db9ec823\snafu-0.7.5\src\Snafu.md C:\Users\SubCom\.cargo\registry\src\github.com-1ecc6299db9ec823\snafu-0.7.5\src\report.md C:\Users\SubCom\.cargo\registry\src\github.com-1ecc6299db9ec823\snafu-0.7.5\src\../README.md
+
+C:\Users\SubCom\Documents\Projects\Rust Projects\xorword\target\debug\deps\snafu-834926a5dd90db76.d: C:\Users\SubCom\.cargo\registry\src\github.com-1ecc6299db9ec823\snafu-0.7.5\src\lib.rs C:\Users\SubCom\.cargo\registry\src\github.com-1ecc6299db9ec823\snafu-0.7.5\src\backtrace_inert.rs C:\Users\SubCom\.cargo\registry\src\github.com-1ecc6299db9ec823\snafu-0.7.5\src\once_bool.rs C:\Users\SubCom\.cargo\registry\src\github.com-1ecc6299db9ec823\snafu-0.7.5\src\error_chain.rs C:\Users\SubCom\.cargo\registry\src\github.com-1ecc6299db9ec823\snafu-0.7.5\src\report.rs C:\Users\SubCom\.cargo\registry\src\github.com-1ecc6299db9ec823\snafu-0.7.5\src\Snafu.md C:\Users\SubCom\.cargo\registry\src\github.com-1ecc6299db9ec823\snafu-0.7.5\src\report.md C:\Users\SubCom\.cargo\registry\src\github.com-1ecc6299db9ec823\snafu-0.7.5\src\../README.md
+
+C:\Users\SubCom\.cargo\registry\src\github.com-1ecc6299db9ec823\snafu-0.7.5\src\lib.rs:
+C:\Users\SubCom\.cargo\registry\src\github.com-1ecc6299db9ec823\snafu-0.7.5\src\backtrace_inert.rs:
+C:\Users\SubCom\.cargo\registry\src\github.com-1ecc6299db9ec823\snafu-0.7.5\src\once_bool.rs:
+C:\Users\SubCom\.cargo\registry\src\github.com-1ecc6299db9ec823\snafu-0.7.5\src\error_chain.rs:
+C:\Users\SubCom\.cargo\registry\src\github.com-1ecc6299db9ec823\snafu-0.7.5\src\report.rs:
+C:\Users\SubCom\.cargo\registry\src\github.com-1ecc6299db9ec823\snafu-0.7.5\src\Snafu.md:
+C:\Users\SubCom\.cargo\registry\src\github.com-1ecc6299db9ec823\snafu-0.7.5\src\report.md:
+C:\Users\SubCom\.cargo\registry\src\github.com-1ecc6299db9ec823\snafu-0.7.5\src\../README.md:

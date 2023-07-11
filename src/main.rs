@@ -63,7 +63,7 @@ fn main() {
     let mut avg_jac_sim_vector: Vec<f64> = Vec::new();
     let mut avg_lev_sim_vector: Vec<f64> = Vec::new();
     let mut avg_gaps = 0.0;
-    let total = (num_iter - 1) * 1000f64;
+    let total = ((num_iter - 1) * 1000) as f64;
 
     for i in 1..num_iter {
         println!("Step i={i}");
@@ -118,7 +118,7 @@ fn main() {
 
     // Plotting the performance of the 32-byte encoding
     // using the average distance and average similarity measures
-    let trace_1 = Scatter::new(avg_dist_vector.clone(), avg_gaps_vector.clone())
+    let trace_1 = Scatter::new(avg_dist_vector.clone(), avg_jac_sim_vector.clone())
         .name("Gaps")
         .mode(Mode::LinesMarkers);
     let trace_2 = Scatter::new(avg_dist_vector.clone(), avg_lev_sim_vector.clone())

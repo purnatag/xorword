@@ -1,0 +1,9 @@
+C:\Users\SubCom\Documents\Projects\Rust Projects\xorword\target\debug\deps\unicode_segmentation-f5bfeec4b4f1d11d.rmeta: C:\Users\SubCom\.cargo\registry\src\github.com-1ecc6299db9ec823\unicode-segmentation-1.10.1\src\lib.rs C:\Users\SubCom\.cargo\registry\src\github.com-1ecc6299db9ec823\unicode-segmentation-1.10.1\src\grapheme.rs C:\Users\SubCom\.cargo\registry\src\github.com-1ecc6299db9ec823\unicode-segmentation-1.10.1\src\sentence.rs C:\Users\SubCom\.cargo\registry\src\github.com-1ecc6299db9ec823\unicode-segmentation-1.10.1\src\word.rs C:\Users\SubCom\.cargo\registry\src\github.com-1ecc6299db9ec823\unicode-segmentation-1.10.1\src\tables.rs
+
+C:\Users\SubCom\Documents\Projects\Rust Projects\xorword\target\debug\deps\unicode_segmentation-f5bfeec4b4f1d11d.d: C:\Users\SubCom\.cargo\registry\src\github.com-1ecc6299db9ec823\unicode-segmentation-1.10.1\src\lib.rs C:\Users\SubCom\.cargo\registry\src\github.com-1ecc6299db9ec823\unicode-segmentation-1.10.1\src\grapheme.rs C:\Users\SubCom\.cargo\registry\src\github.com-1ecc6299db9ec823\unicode-segmentation-1.10.1\src\sentence.rs C:\Users\SubCom\.cargo\registry\src\github.com-1ecc6299db9ec823\unicode-segmentation-1.10.1\src\word.rs C:\Users\SubCom\.cargo\registry\src\github.com-1ecc6299db9ec823\unicode-segmentation-1.10.1\src\tables.rs
+
+C:\Users\SubCom\.cargo\registry\src\github.com-1ecc6299db9ec823\unicode-segmentation-1.10.1\src\lib.rs:
+C:\Users\SubCom\.cargo\registry\src\github.com-1ecc6299db9ec823\unicode-segmentation-1.10.1\src\grapheme.rs:
+C:\Users\SubCom\.cargo\registry\src\github.com-1ecc6299db9ec823\unicode-segmentation-1.10.1\src\sentence.rs:
+C:\Users\SubCom\.cargo\registry\src\github.com-1ecc6299db9ec823\unicode-segmentation-1.10.1\src\word.rs:
+C:\Users\SubCom\.cargo\registry\src\github.com-1ecc6299db9ec823\unicode-segmentation-1.10.1\src\tables.rs:
